@@ -4,7 +4,7 @@ require_once("http://localhost:8080/JavaBridge/java/Java.inc");
 
 class ReportDesign {
     private $java;
-    public function ReportDesign($java) {
+    public function __construct($java) {
         $this->java = $java;
     }
     public function getJava() {
@@ -14,7 +14,7 @@ class ReportDesign {
 
 class ReportDocument {
     private $java;
-    public function ReportDocument($java) {
+    public function __construct($java) {
         $this->java = $java;
     }
     public function close() {
@@ -27,7 +27,7 @@ class ReportDocument {
 
 class RunTask {
     private $java;
-    public function RunTask($java) {
+    public function __construct($java) {
         $this->java = $java;
     }
     public function run($reportDocument) {
@@ -43,7 +43,7 @@ class RunTask {
 
 class RenderTask {
     private $java;
-    public function RenderTask($java) {
+    public function __construct($java) {
         $this->java = $java;
     }
     public function setRenderOption(RenderOption $options) {
@@ -65,7 +65,7 @@ class RenderTask {
 
 class BirtEngine {
     private $java;
-    private function BirtEngine($java) {
+    private function __construct($java) {
         $this->java = $java;
     }
     /**
@@ -110,7 +110,7 @@ class BirtEngine {
 
 class ByteArrayOutputStream {
     private $java;
-    public function ByteArrayOutputStream() {
+    public function __construct() {
         $this->java = new java("java.io.ByteArrayOutputStream");
     }
     public function getJava() {
@@ -123,7 +123,7 @@ class ByteArrayOutputStream {
 
 class HTMLServerImageHandler {
     private $java;
-    public function HTMLServerImageHandler() {
+    public function __construct() {
         $this->java = new java("org.eclipse.birt.report.engine.api.HTMLServerImageHandler");
     }
     public function getJava() {
@@ -133,7 +133,7 @@ class HTMLServerImageHandler {
 
 class RenderOption {
     private $java;
-    public function RenderOption() {
+    public function __construct() {
         $this->java = new java("org.eclipse.birt.report.engine.api.RenderOption");
     }
     public function setOutputFormat($outputFormat) {
@@ -149,7 +149,7 @@ class RenderOption {
 
 class HTMLRenderOption {
     private $java;
-    public function HTMLRenderOption(RenderOption $renderOption = null) {
+    public function __construct(RenderOption $renderOption = null) {
         if (is_null($renderOption)) {
             $this->java = new java("org.eclipse.birt.report.engine.api.HTMLRenderOption");
         } else {
@@ -181,7 +181,7 @@ class HTMLRenderOption {
 
 class PDFRenderOption {
     private $java;
-    public function PDFRenderOption(RenderOption $renderOption = null) {
+    public function __construct(RenderOption $renderOption = null) {
         if (is_null($renderOption)) {
             $this->java = new java("org.eclipse.birt.report.engine.api.PDFRenderOption");
         } else {

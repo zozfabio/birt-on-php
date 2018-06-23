@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.3.2.RELEASE</version>
+        <version>1.5.12.RELEASE</version>
     </parent>
 
     <groupId>com.example</groupId>
     <artifactId>spring-boot-php-birt</artifactId>
     <version>1.0-SNAPSHOT</version>
-    
+
     <packaging>jar</packaging>
-    
+
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -22,28 +24,26 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
-        
         <dependency>
             <groupId>org.eclipse.birt.runtime</groupId>
             <artifactId>org.eclipse.birt.runtime</artifactId>
             <version>4.4.2</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.eclipse.birt.runtime</groupId>
-                    <artifactId>org.eclipse.orbit.mongodb</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
-        
         <dependency>
-            <groupId>net.sourceforge</groupId>
+            <groupId>io.soluble.pjb</groupId>
             <artifactId>php-java-bridge</artifactId>
-            <version>6.2.1</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <version>6.2.11</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

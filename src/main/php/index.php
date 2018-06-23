@@ -1,17 +1,17 @@
 <?php
 
-require_once("java/BirtEngine.inc");
+require_once("BirtEngine.inc");
 
 $reportDesignName = $_SERVER["PATH_INFO"];
 
 try {
     $birtEngine = BirtEngine::getBirtEngine();
-    
-    $reportDesign = $birtEngine->openReportDesign(__DIR__."/design/$reportDesignName.rptdesign");
-    
+
+    $reportDesign = $birtEngine->openReportDesign(__DIR__."$reportDesignName.rptdesign");
+
     $task = $birtEngine->createRunTask($reportDesign);
-    $task->run(__DIR__."/temp/docs/$reportDesignName.rptdocument");
-    
+    $task->run(__DIR__."$reportDesignName.rptdocument");
+
     $task->close();
 
     echo "OK";

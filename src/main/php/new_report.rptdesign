@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="4">
+            <column id="5"/>
+            <row id="6">
+                <cell id="7">
+                    <property name="backgroundColor">#960303</property>
+                    <label id="10">
+                        <property name="fontSize">14pt</property>
+                        <property name="color">#000000</property>
+                        <property name="textAlign">center</property>
+                        <text-property name="text">Relatório</text-property>
+                    </label>
+                </cell>
+            </row>
+            <row id="8">
+                <cell id="9">
+                    <label id="11">
+                        <text-property name="text">Hello World!</text-property>
+                    </label>
+                </cell>
+            </row>
+        </grid>
+    </body>
+</report>
