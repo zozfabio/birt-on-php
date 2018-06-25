@@ -1,21 +1,18 @@
-package com.example.birt;
+package me.zozfabio.birt;
 
-import java.io.Closeable;
 import org.eclipse.birt.core.exception.BirtException;
 import org.eclipse.birt.core.framework.Platform;
 import org.eclipse.birt.report.engine.api.EngineConfig;
 import org.eclipse.birt.report.engine.api.IReportEngine;
 import org.eclipse.birt.report.engine.api.IReportEngineFactory;
 import org.eclipse.core.internal.registry.RegistryProviderFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import java.io.Closeable;
 
 /**
  * @author zozfabio
  */
 public class BirtEngine {
-    
-    private static final Logger logger = LoggerFactory.getLogger(Application.class);
     
     private static IReportEngine engine;
     
@@ -32,7 +29,8 @@ public class BirtEngine {
 
             return engine = ref.createReportEngine(ec);
         } catch (BirtException ex) {
-            logger.error("Erro ao iniciar a engine!", ex);
+            System.out.println("Erro ao iniciar a engine!");
+            ex.printStackTrace();
             return null;
         }
     }
