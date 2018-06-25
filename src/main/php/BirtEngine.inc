@@ -72,8 +72,8 @@ class BirtEngine {
      * @return BirtEngine
      */
     public static function getBirtEngine() {
-        $java = java("com.example.birt.BirtEngine")->getBirtEngine();
-        java_context()->onShutdown(java("com.example.birt.BirtEngine")->getCloseable());
+        $java = java("me.zozfabio.birt.BirtEngine")->getBirtEngine();
+        java_context()->onShutdown(java("me.zozfabio.birt.BirtEngine")->getCloseable());
         return new BirtEngine($java);
     }
     /**
