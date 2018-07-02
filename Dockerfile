@@ -14,10 +14,12 @@ COPY src/main/php/render.php /var/www/html/
 COPY src/main/php/index.php /var/www/html/
 COPY src/main/php/new_report.rptdesign /var/www/html/
 
-COPY target/spring-boot-php-birt.jar /root/app.jar
-COPY cmd.sh /usr/local/bin/
+COPY target/birt-on-php.jar /root/birt/app.jar
+COPY target/lib /root/birt/lib
+RUN chmod 400 /root/birt/app.jar
+RUN chmod -R 400 /root/birt/lib
 
-RUN chmod 400 /root/app.jar
+COPY cmd.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/cmd.sh
 
 EXPOSE 80

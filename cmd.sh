@@ -13,7 +13,7 @@ java \
     -Dcom.sun.management.jmxremote.ssl=false \
     -Dcom.sun.management.jmxremote.authenticate=false \
     -Duser.language=pt -Duser.country=BR -Duser.timezone=America/Sao_Paulo \
-    -jar /root/app.jar >> /dev/null &
+    -jar /root/birt/app.jar >> /var/log/birt.log &
 
 source /etc/apache2/envvars
 exec apache2 -DFOREGROUND

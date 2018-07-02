@@ -11,13 +11,15 @@ public class Application {
         JavaBridgeRunner instance = JavaBridgeRunner.getInstance("INET:8080");
         (new Thread(() -> {
             try {
-                System.out.println("Servidor JavaBridge aguardando iteração!");
+                System.out.println("JavaBridge server waiting!");
+                BirtEngine.init();
                 instance.waitFor();
             } catch (InterruptedException ex) {
-                System.out.println("Servidor JavaBridge foi interrompido!");
+                System.out.println("JavaBridge server interrupted!");
             } finally {
                 instance.destroy();
-                System.out.println("Servidor JavaBridge foi destruido!");
+                BirtEngine.destroy();
+                System.out.println("JavaBridge server destroied!");
             }
         })).start();
     }

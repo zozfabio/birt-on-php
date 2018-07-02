@@ -1,13 +1,10 @@
 package me.zozfabio.birt;
 
-import org.eclipse.birt.core.exception.BirtException;
 import org.eclipse.birt.core.framework.Platform;
 import org.eclipse.birt.report.engine.api.EngineConfig;
 import org.eclipse.birt.report.engine.api.IReportEngine;
 import org.eclipse.birt.report.engine.api.IReportEngineFactory;
 import org.eclipse.core.internal.registry.RegistryProviderFactory;
-
-import java.io.Closeable;
 
 /**
  * @author zozfabio
@@ -15,31 +12,34 @@ import java.io.Closeable;
 public class BirtEngine {
     
     private static IReportEngine engine;
-    
-    public static IReportEngine getBirtEngine() {
-        if (engine != null) {
-            return engine;
-        }
 
+    public static IReportEngine getBirtEngine() {
+        return engine;
+    }
+
+    static void init() {
         EngineConfig ec = new EngineConfig();
         try {
             Platform.startup(ec);
-            
+
             IReportEngineFactory ref = (IReportEngineFactory) Platform.createFactoryObject(IReportEngineFactory.EXTENSION_REPORT_ENGINE_FACTORY);
 
-            return engine = ref.createReportEngine(ec);
-        } catch (BirtException ex) {
-            System.out.println("Erro ao iniciar a engine!");
+            engine = ref.createReportEngine(ec);
+        } catch (Throwable ex) {
+            System.out.println("Error on engine init! " + ex.getMessage());
             ex.printStackTrace();
-            return null;
         }
     }
-    
-    public static Closeable getCloseable() {
-        return () -> {
+
+    static void destroy() {
+        try {
             engine.destroy();
             Platform.shutdown();
             RegistryProviderFactory.releaseDefault();
-        };
+        } catch (Throwable ex) {
+            System.out.println("Error on engine destroy!");
+            ex.printStackTrace();
+        }
+
     }
 }
